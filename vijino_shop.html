@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ویجی نو | فروشگاه کتاب</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #f4f4f4; /* پس‌زمینه روشن‌تر */
+      color: #333;
+      direction: rtl;
+    }
+
+    header {
+      background-color: #f39c12;
+      padding: 20px;
+      text-align: center;
+      font-size: 2.5rem;
+      color: #fff;
+      font-family: 'Almarai', cursive; /* فونت نستعلیق */
+    }
+
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: #f39c12;
+    }
+
+    .guide, .contact, .about {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product h2 {
+      margin: 10px 0 5px;
+    }
+
+    .price {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      color: #0f0;
+    }
+
+    .discount {
+      color: red;
+      font-size: 1rem;
+      text-decoration: line-through;
+      margin-top: 5px;
+    }
+
+    .btn {
+      background-color: #f39c12;
+      color: #111;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ffc107;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      justify-content: space-around;
+    }
+
+    .feature-box {
+      flex: 1;
+      min-width: 200px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .profile {
+      text-align: center;
+      margin: 40px auto;
+    }
+
+    .profile img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #f39c12;
+      box-shadow: 0 0 15px rgba(255,193,7,0.5);
+    }
+
+    .profile h3 {
+      margin-top: 15px;
+    }
+
+    footer {
+      background-color: #f39c12;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    /* نوار جستجو و فیلتر */
+    .search-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #222;
+    }
+
+    .search-container input {
+      padding: 10px;
+      width: 60%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .price-range {
+      display: flex;
+      gap: 20px;
+    }
+
+    .price-range input {
+      padding: 5px;
+      width: 100px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>سرمایه‌گذاری برای تولید</header>
+
+  <nav>
+    <a href="#products">محصولات</a>
+    <a href="#features">ویژگی‌ها</a>
+    <a href="#about">درباره ما</a>
+    <a href="#contact">تماس با ما</a>
+  </nav>
+
+  <div class="guide">
+    برای خرید، روی دکمه "سفارش از واتساپ" کلیک کن و پیام بده تا سریع برات ارسال کنیم 📦
+  </div>
+
+  <!-- بخش جستجو و فیلتر قیمت -->
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="جستجو در محصولات..." onkeyup="filterProducts()" />
+    <div class="price-range">
+      <input type="number" id="min-price" placeholder="حداقل قیمت" oninput="filterProducts()" />
+      <input type="number" id="max-price" placeholder="حداکثر قیمت" oninput="filterProducts()" />
+    </div>
+  </div>
+
+  <div class="container" id="products">
+    <!-- محصول اول: کتاب روانشناسی تاریک -->
+    <div class="product" data-price="450000">
+      <h2>کتاب روانشناسی تاریک</h2>
+      <p class="price">۴۵۰٬۰۰۰ تومان</p>
+      <p class="discount">۶۰۰٬۰۰۰ تومان</p>
+      <a class="btn" href="https://wa.me/989930727501" target="_blank">سفارش از واتساپ</a>
+    </div>
+    <!-- محصول دوم: کتاب سیگنال 100 -->
+    <div class="product" data-price="380000">
+      <h2>کتاب سیگنال 100</h2>
+      <p class="price">۳۸۰٬۰۰۰ تومان</p>
+      <p class="discount">۴۵۰٬۰۰۰ تومان</p>
+      <a class="btn" href="https://wa.me/989963495272" target="_blank">سفارش از واتساپ</a>
+    </div>
+    <!-- محصول سوم: کتاب رشادت -->
+    <div class="product" data-price="250000">
+      <h2>کتاب رشادت</h2>
+      <p class="price">۲۵۰٬۰۰۰ تومان</p>
+      <p class="discount">۳۰۰٬۰۰۰ تومان</p>
+      <a class="btn" href="https://wa.me/989963495272" target="_blank">سفارش از واتساپ</a>
+    </div>
+    <!-- محصول چهارم: کتاب علوم -->
+    <div class="product" data-price="400000">
+      <h2>کتاب علوم</h2>
+      <p class="price">۴۰۰٬۰۰۰ تومان</p>
+      <p class="discount">۴۵۰٬۰۰۰ تومان</p>
+      <a class="btn" href="https://wa.me/989930727501" target="_blank">سفارش از واتساپ</a>
+    </div>
+    <!-- محصول پنجم: کتاب ریاضی هشتم -->
+    <div class="product" data-price="150000">
+      <h2>کتاب ریاضی هشتم</h2>
+      <p class="price">۱۵۰٬۰۰۰ تومان</p>
+      <p class="discount">۲۰۰٬۰۰۰ تومان</p>
+      <a class="btn" href="https://wa.me/989930727501" target="_blank">سفارش از واتساپ</a>
+    </div>
+  </div>
+
+  <div class="features" id="features">
+    <div class="feature-box">
+      <h3>سبد خرید حرفه‌ای</h3>
+      <p>در آینده نزدیک، امکان سبد خرید مستقیم و ثبت سفارش بدون نیاز به واتساپ فعال خواهد شد.</p>
+    </div>
+    <div class="feature-box">
+      <h3>دسته‌بندی محصولات</h3>
+      <p>محصولات در دسته‌های کتاب‌های روانشناسی، انگیزشی، مدیریتی و... تقسیم می‌شن تا سریع‌تر انتخاب کنی.</p>
+    </div>
+    <div class="feature-box">
+      <h3>پنل مدیریت آسان</h3>
+      <p>اضافه‌کردن محصول جدید با فرم ساده، بدون کدنویسی فقط با چند کلیک.</p>
+    </div>
+    <div class="feature-box">
+      <h3>درگاه پرداخت امن</h3>
+      <p>به‌زودی امکان پرداخت آنلاین از طریق درگاه معتبر فعال خواهد شد.</p>
+    </div>
+    <div class="feature-box">
+      <h3>پشتیبانی و رضایت مشتری</h3>
+      <p>اولویت ما رضایت مشتریه، ۲۴ ساعته در واتساپ پاسخگو هستیم.</p>
+    </div>
+  </div>
+
+  <div class="about" id="about">
+    <h2>درباره ما</h2>
+    <p>فروشگاه ویجی نو با هدف ارائه بهترین کتاب‌های روانشناسی، توسعه فردی و علمی آغاز به کار کرده است. هدف ما ارائه کتاب‌های باکیفیت و مرتبط با نیازهای روز بازار است. ما با ارائه خدمات سریع و پشتیبانی قوی، به دنبال رضایت مشتریان عزیزمان هستیم.</p>
+  </div>
+
+  <div class="profile">
+    <img src="https://i.postimg.cc/Y2FQspLM/profile-demo.jpg" alt="عکس صاحب فروشگاه">
+    <h3>مدیریت: ویجی نو</h3>
+  </div>
+
+  <div class="contact" id="contact">
+    <h2>تماس با ما</h2>
+    <p>برای هرگونه سوال یا پشتیبانی، با شماره ۰۹۹۶۳۴۹۵۲۷۲ در واتساپ پیام بده یا از طریق ایمیل <b>a3595076@gmail.com</b> با ما در تماس باش.</p>
+  </div>
+
+  <footer>
+    طراحی شده با عشق ❤️ توسط ویجی‌نو | تمامی حقوق محفوظ است
+  </footer>
+
+  <script>
+    function filterProducts() {
+      const searchTerm = document.getElementById("search-input").value.toLowerCase();
+      const minPrice = parseInt(document.getElementById("min-price").value) || 0;
+      const maxPrice = parseInt(document.getElementById("max-price").value) || Infinity;
+      const products = document.querySelectorAll(".product");
+
+      products.forEach(product => {
+        const title = product.querySelector("h2").textContent.toLowerCase();
+        const price = parseInt(product.getAttribute("data-price"));
+        
+        const matchesSearch = title.includes(searchTerm);
+        const matchesPrice = price >= minPrice && price <= maxPrice;
+
+        if (matchesSearch && matchesPrice) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
